@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fila de Pacientes</title>
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Fila de Pacientes</h1>
+        <form id="patientForm">
+            <input type="text" id="patientName" placeholder="Nome do Paciente" required>
+            <button type="button" id="normalAdd">Cadastro Normal</button>
+            <button type="button" id="emergencyAdd">Cadastro Emergencial</button>
+        </form>
+        <button id="callPatient">Chamar Paciente</button>
+
+        <h2>Pacientes na Fila:</h2>
+        <ul id="patientQueue"></ul>
+
+        <h2>Paciente Chamado:</h2>
+        <p id="calledPatient">Nenhum paciente chamado ainda.</p>
+    </div>
+
+    <script src="script2.js"></script>
+</body>
+</html>
