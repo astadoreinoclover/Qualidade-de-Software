@@ -11,6 +11,7 @@ describe('Login testing and logged pages in Web in Desktop viewport', () => {
     cy.get("div input[type*=password]").type("admin123")
 
     cy.get("button").contains("Login").click()
+    cy.wait(1200); 
   })
 
   it('Check Dashboard page', () => {
@@ -19,11 +20,18 @@ describe('Login testing and logged pages in Web in Desktop viewport', () => {
     cy.contains('My Actions').should('be.visible')
     cy.contains('Quick Launch').should('be.visible')
     cy.contains('Buzz Latest Posts').should('be.visible')
+    cy.wait(2500); 
   })
 
-  it('Check Recruitment page', () => {
-    cy.contains('Recruitment').should('be.visible').click()
-    //Continuar testes da página recrutamento
+  it('Navigate to Recruitment and switch to Vacancies', () => {
+    cy.contains('Recruitment').should('be.visible').click();
+    cy.wait(1000);
+    cy.url().should('include', '/recruitment');
+    cy.contains('Vacancies').should('be.visible').click();
+    cy.wait(1000);
+    cy.url().should('include', '/viewJobVacancy'); 
+    cy.scrollTo(0, 700); 
+    cy.wait(3000); 
   })
 
   it('Update My Info', () => {
@@ -41,5 +49,7 @@ describe('Login testing and logged pages in Web in Desktop viewport', () => {
     cy.get('input[name="firstName"]').should('have.value', 'João');
     cy.get('input[name="middleName"]').should('have.value', 'Maria');
     cy.get('input[name="lastName"]').should('have.value', 'Silva'); 
-  }) 
+    cy.wait(3000);
+  })
 })
+
