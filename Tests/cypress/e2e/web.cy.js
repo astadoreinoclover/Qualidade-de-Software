@@ -20,6 +20,7 @@ describe('Login testing and logged pages in Web in Desktop viewport', () => {
     cy.contains('My Actions').should('be.visible')
     cy.contains('Quick Launch').should('be.visible')
     cy.contains('Buzz Latest Posts').should('be.visible')
+    cy.scrollTo(0, 100);
     cy.wait(2500); 
   })
 
@@ -49,7 +50,14 @@ describe('Login testing and logged pages in Web in Desktop viewport', () => {
     cy.get('input[name="firstName"]').should('have.value', 'João');
     cy.get('input[name="middleName"]').should('have.value', 'Maria');
     cy.get('input[name="lastName"]').should('have.value', 'Silva'); 
-    cy.wait(3000);
+    cy.scrollTo(500, 0); 
+    cy.wait(4000);
+  })
+
+  it('Logout from the system', () => {
+    cy.get('.oxd-userdropdown-tab').click();
+    cy.contains('Logout').should('be.visible').click();
+    cy.url().should('include', '/auth/login');
+    cy.get("div input[class*=oxd-input]").first().should('be.visible');
   })
 })
-
