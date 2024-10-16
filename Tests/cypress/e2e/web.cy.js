@@ -26,7 +26,20 @@ describe('Login testing and logged pages in Web in Desktop viewport', () => {
     //Continuar testes da página recrutamento
   })
 
-  it('Check Other page', () => {
-    //Continuar testes de outra página
-  })
+  it('Update My Info', () => {
+    cy.get(':nth-child(6) > .oxd-main-menu-item').click();
+    cy.url().should('include', '/pim/viewPersonalDetails');
+
+    cy.get('input[name="firstName"]').clear().type('João'); 
+    cy.get('input[name="middleName"]').clear().type('Maria');
+    cy.get('input[name="lastName"]').clear().type('Silva'); 
+
+    cy.get('#app > div.oxd-layout.orangehrm-upgrade-layout > div.oxd-layout-container > div.oxd-layout-context > div > div > div > div.orangehrm-edit-employee-content > div.orangehrm-horizontal-padding.orangehrm-vertical-padding > form > div.oxd-form-actions > button.oxd-button--medium.oxd-button--secondary')
+      .should('be.enabled')
+      .click();
+
+    cy.get('input[name="firstName"]').should('have.value', 'João');
+    cy.get('input[name="middleName"]').should('have.value', 'Maria');
+    cy.get('input[name="lastName"]').should('have.value', 'Silva'); 
+  }) 
 })
