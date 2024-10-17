@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "script.js",
   "scripts": {
-    "test": "jest --env=jsdom"
+    "test": "jest --env=jsdom --verbose"
   },
   "keywords": [],
   "author": "",
